@@ -39,12 +39,14 @@ android {
         checkReleaseBuilds = false
     }
 
-    /*publishing {
+    /*
+    publishing {
         singleVariant("release") {
-            // withSourcesJar()
-            // withJavadocJar()
+            withSourcesJar()
+            withJavadocJar()
         }
-    }*/
+    }
+    */
 
 }
 
@@ -62,28 +64,22 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-
                 groupId = "com.github.mirohs"
                 artifactId = "lib1"
-                version = "1.0.7"
+                version = "1.0.9"
             }
         }
     }
 }
 
+/*
 afterEvaluate {
     val isCiBuild = System.getenv("CI") == "true" || System.getenv("JITPACK") == "true"
-
     if (isCiBuild) {
-        tasks.matching { it.name.startsWith("lintVital") }.configureEach {
-            enabled = false
-        }
-
-        // Optional: skip all lint tasks (not just lintVital)
         tasks.matching { it.name.startsWith("lint") }.configureEach {
             enabled = false
         }
-
-        println("CI build detected — lint tasks disabled for faster, error-free build.")
+        println("CI build: disable lint tasks")
     }
 }
+*/
