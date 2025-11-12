@@ -39,13 +39,12 @@ android {
         checkReleaseBuilds = false
     }
 
-    // This makes sure the release variant can be published
-    publishing {
+    /*publishing {
         singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
+            // withSourcesJar()
+            // withJavadocJar()
         }
-    }
+    }*/
 
 }
 
@@ -57,26 +56,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
-
-/*publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = "io.jitpack"
-            artifactId = "library"
-            version = "1.0"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
-}*/
-
-/*android {
-    publishing {
-        singleVariant("release") {}
-    }
-}*/
 
 afterEvaluate {
     publishing {
