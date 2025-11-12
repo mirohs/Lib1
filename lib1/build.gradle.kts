@@ -50,6 +50,26 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
+/*publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = "io.jitpack"
+            artifactId = "library"
+            version = "1.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}*/
+
+android {
+    publishing {
+        singleVariant("release") {}
+    }
+}
+
 afterEvaluate {
     val isCiBuild = System.getenv("CI") == "true" || System.getenv("JITPACK") == "true"
 

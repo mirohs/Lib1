@@ -1,3 +1,6 @@
+// https://docs.jitpack.io/android/
+// https://developer.android.com/build/publish-library
+
 package de.luh.hci.mi.lib1app
 
 import android.os.Bundle
