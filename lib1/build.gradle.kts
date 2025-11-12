@@ -39,6 +39,14 @@ android {
         checkReleaseBuilds = false
     }
 
+    // This makes sure the release variant can be published
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
 }
 
 dependencies {
@@ -64,9 +72,23 @@ dependencies {
     }
 }*/
 
-android {
+/*android {
     publishing {
         singleVariant("release") {}
+    }
+}*/
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "com.github.mirohs"
+                artifactId = "lib1"
+                version = "1.0.7"
+            }
+        }
     }
 }
 
